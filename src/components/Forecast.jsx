@@ -25,7 +25,7 @@ const Forecast = ({ city }) => {
 
   return (
     <div className="forecast">
-      <h1>Předpověď pro {city}</h1>
+      <h1><span>Předpověď pro:</span> {city}</h1>
       <div className="forecast-list">
         {forecastData.map((item, index) => (
           <div className="forecast-item" key={index}>
