@@ -1,6 +1,7 @@
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useEffect, useState } from "react";
+import './Radarmap.css'
 
 const RadarMap = () => {
   const [radarTimestamp, setRadarTimestamp] = useState(null);
