@@ -1,7 +1,6 @@
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useEffect, useState } from "react";
-import './Radarmap.css'
 
 const RadarMap = () => {
   const [radarTimestamp, setRadarTimestamp] = useState(null);
@@ -24,7 +23,7 @@ const RadarMap = () => {
           setSatelliteTimestamp(satelliteTimes[satelliteTimes.length - 1].time);
         }
       } catch (err) {
-        console.error("error", err);
+        console.error("Chyba při načítání timestampů z RainViewer API:", err);
       }
     };
 
@@ -32,14 +31,14 @@ const RadarMap = () => {
   }, []);
 
   return (
-    <MapContainer  className="radar" >
-      {}
+    <MapContainer center={[49.2, 17.7]} zoom={6} style={{ height: "500px", width: "100%" }}>
+      {/* Základní mapa */}
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution="&copy; OpenStreetMap"
       />
 
-      {}
+      {/* Oblačnost */}
       {satelliteTimestamp && (
         <TileLayer
           url={`https://tilecache.rainviewer.com/v2/satellite/${satelliteTimestamp}/256/{z}/{x}/{y}/2/1_1.png`}
@@ -48,7 +47,7 @@ const RadarMap = () => {
         />
       )}
 
-      {}
+      {/* Srážky */}
       {radarTimestamp && (
         <TileLayer
           url={`https://tilecache.rainviewer.com/v2/radar/${radarTimestamp}/256/{z}/{x}/{y}/2/1_1.png`}
