@@ -1,9 +1,9 @@
 .weather{
     place-self: center;
-    padding: 40px 20px;
+    padding: 58px 20px;
     border-radius: 10px 25px;
     background: rgba(0, 0, 0, 0.171);
-    
+   
     border: 2px solid rgba(255, 255, 255, 0.336);
     display: flex;
     flex-direction: column;
